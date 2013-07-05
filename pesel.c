@@ -8,13 +8,12 @@ int make_pesel(char pesel[]) //przerobienie stringa na chary z odpowienimi warto
     error = 0;
     for (i = 0; i < 11; i++)
     if ((pesel[i] > 47) && (pesel[i] < 58))  //sprawdzenie czy wprowadzone znaki to cyfry
-       pesel[i] -= 48;	 //przerobienie '9' na 9
+        pesel[i] -= 48;	 //przerobienie '9' na 9
     else
-	   error = 1; //jesli zle to przerywamy
+        error = 1; //jesli zle to przerywamy
 
     return error;
 }
-
 
 int check(char pesel[]) //sprawdza znak kontrolny
 {
@@ -29,7 +28,6 @@ int check(char pesel[]) //sprawdza znak kontrolny
 
     return error;
 }
-
 
 int make_and_check_date(char pesel[], int date[])  //wyciagamy date z peselu
 {
@@ -84,7 +82,6 @@ int make_and_check_date(char pesel[], int date[])  //wyciagamy date z peselu
 	return error;  //zwracamy wartosc bledu
 }
 
-
 char check_sex(char pesel[], char name[], int *sex)  //sprawdzamy plec
 {
     int error;
@@ -102,7 +99,6 @@ char check_sex(char pesel[], char name[], int *sex)  //sprawdzamy plec
 	return error; //zwracamy blad
 }
 
-
 void print_results(int date[], char pesel[], char name[], int *sex)  //drukujemy na ekran
 {
     int i;
@@ -116,7 +112,6 @@ void print_results(int date[], char pesel[], char name[], int *sex)  //drukujemy
 	    printf("\nTwoja plec: mezczyzna.");
 	printf("\nTwoja data urodzenia: %02d.%02d.%4d.", date[2], date[1], date[0]);  //data urodzenia
 }
-
 
 int main(void)
 {
@@ -157,5 +152,5 @@ int main(void)
     else
         printf("Bledny numer PESEL!");
 
-    return 0;
+    return 0; //no
 }
