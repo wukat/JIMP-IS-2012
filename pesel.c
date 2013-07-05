@@ -143,11 +143,11 @@ int main(void)
                 else
                     printf("Twoja plec nie zgadza sie z imieniem!");
             }
-		    else
-		        printf("Bledna data urodzenia");
-		}
-		else
-		    printf("Blad liczby kontrolnej!");
+            else
+                printf("Bledna data urodzenia");
+        }
+        else
+            printf("Blad liczby kontrolnej!");
     }
     else
         printf("Bledny numer PESEL!");
