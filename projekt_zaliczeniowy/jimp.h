@@ -30,5 +30,4 @@ void znajdz_koncowki(int, data, char *, hurtownia *, int);
 void szukaj_wyczerpanych(zamowienie, int **, int, hurtownia *, int, FILE *, data);
 sklad * sumuj_hurtownie(hurtownia *, int, int *);
 
-
 #endif
