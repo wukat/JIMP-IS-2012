@@ -47,39 +47,39 @@ int make_and_check_date(char pesel[], int date[])  //wyciagamy date z peselu
             date[1] -= 80;
             date[0] += 1800;
         }
-	    else if ((date[1] >= 1) && (date[1] <= 12))
-		    date[0] += 1900;
-		else if ((date[1] >= 21) && (date[1] <= 32))
-		{
+        else if ((date[1] >= 1) && (date[1] <= 12))
+            date[0] += 1900;
+        else if ((date[1] >= 21) && (date[1] <= 32))
+        {
             date[1] -= 20;
             date[0] += 2000;
         }
-		else if ((date[1] >= 41) && (date[1] <= 52))
-		{
+        else if ((date[1] >= 41) && (date[1] <= 52))
+        {
             date[1] -= 40;
             date[0] += 2100;
         }
-		else if ((date[1] >= 61) && (date[1] <= 72))
-		{
+        else if ((date[1] >= 61) && (date[1] <= 72))
+        {
             date[1] -= 60;
             date[0] += 2200;
         }
-		else
-		    error = 1; //to blad
+        else
+            error = 1; //to blad
 
-		if ((date[2] > 29) && (error == 0)) //sprawdzamy dlugosc miesiecy
+        if ((date[2] > 29) && (error == 0)) //sprawdzamy dlugosc miesiecy
         {
-	        if (date[1] == 2)  //jesli luty i dni >29
-		        error = 1;  //to blad (pomijam lata nieprzestepne)
-		    else if (date[2] == 31)  //jesli dni 31
+            if (date[1] == 2)  //jesli luty i dni >29
+                error = 1;  //to blad (pomijam lata nieprzestepne)
+            else if (date[2] == 31)  //jesli dni 31
                 if((date[1] == 4) || (date[1] == 6) || (date[1] == 9) || (date[1] == 11))  //a miesiac ma 30
-			        error = 1;  //to blad
+                    error = 1;  //to blad
         }
     }
-  	else  //jesli dni >31
+    else  //jesli dni >31
         error = 1; //to tym bardziej blad
 
-	return error;  //zwracamy wartosc bledu
+    return error;  //zwracamy wartosc bledu
 }
 
 char check_sex(char pesel[], char name[], int *sex)  //sprawdzamy plec
@@ -89,28 +89,28 @@ char check_sex(char pesel[], char name[], int *sex)  //sprawdzamy plec
     error = 0;
     if (((name[strlen(name)-1] == 'a') && (pesel[9] % 2 == 0)) && (strcmp(name, "Bonawentura") != 0))  //jesli kobieta, to imie konczy sie na 'a', 10 cyfra parzysta, imie != od Bonawentura
         *sex = 1;  //ustalamy plec = kobieta
-	else if(((name[strlen(name)-1] != 'a') && (pesel[9] % 2 == 1)) && (strcmp(name, "Bonawentura") != 0))  //dla mezczyzn (nie bonawentury)
-	    *sex = 0;  //mezczyzna
-	else if(((name[strlen(name)-1] == 'a') && (pesel[9] % 2 == 1)) && (strcmp(name, "Bonawentura") == 0)) //poprawne dla Bonawentury
-	    *sex = 0;  //mezczyzna
-	else
-	    error = 1; // jesli zaden to blad
+    else if(((name[strlen(name)-1] != 'a') && (pesel[9] % 2 == 1)) && (strcmp(name, "Bonawentura") != 0))  //dla mezczyzn (nie bonawentury)
+        *sex = 0;  //mezczyzna
+    else if(((name[strlen(name)-1] == 'a') && (pesel[9] % 2 == 1)) && (strcmp(name, "Bonawentura") == 0)) //poprawne dla Bonawentury
+        *sex = 0;  //mezczyzna
+    else
+        error = 1; // jesli zaden to blad
 
-	return error; //zwracamy blad
+    return error; //zwracamy blad
 }
 
 void print_results(int date[], char pesel[], char name[], int *sex)  //drukujemy na ekran
 {
     int i;
 
-	printf("%s, Twoj PESEL jest poprawny: ", name);  //mamy wydruk: imie,
-	for (i = 0; i < 11; i++)
-    printf("%d", pesel[i]);  // pesel
+    printf("%s, Twoj PESEL jest poprawny: ", name);  //mamy wydruk: imie,
+    for (i = 0; i < 11; i++)
+        printf("%d", pesel[i]);  // pesel
     if (*sex == 1)
         printf("\nTwoja plec: kobieta.");
-	else
-	    printf("\nTwoja plec: mezczyzna.");
-	printf("\nTwoja data urodzenia: %02d.%02d.%4d.", date[2], date[1], date[0]);  //data urodzenia
+    else
+        printf("\nTwoja plec: mezczyzna.");
+    printf("\nTwoja data urodzenia: %02d.%02d.%4d.", date[2], date[1], date[0]);  //data urodzenia
 }
 
 int main(void)
